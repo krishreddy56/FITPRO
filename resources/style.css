@@ -1,0 +1,451 @@
+@charset "UTF-8";
+
+*{
+  margin: 0;
+  padding: 0;
+}
+html {
+  box-sizing: border-box;
+}
+body{
+  height: 100%;
+  width: 100%;
+}
+
+div#container{
+  width: 100%;
+  height: auto;
+  min-width: 1300px;
+
+}
+
+header
+{
+  background-color: #555;
+
+  min-height: 100px;
+  text-align: center;
+  font-size: 30px;
+  color: orange;
+  margin: 0px;
+}
+.head{
+  position: absolute;
+  top: 3%;
+  right: 1%;
+  font-size: 15px;
+
+
+}
+.invalid{
+  color:red;
+}
+.bread{
+  position: absolute;
+  right: 5%;
+  top:9%;
+
+}
+#topmenu{
+
+  padding: 0px;
+  margin-top: 0px;
+  text-align: center;
+  position: relative;
+  background-color: orange;
+
+}
+.topnav{
+  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    background-color: orange;
+    justify-content: center;
+    text-align: center;
+    display: inline-block;
+
+
+}
+
+.topnav li{
+
+  float: left;
+  font-variant: small-caps;
+  font-weight :bold;
+  font-size: 20px;
+  display: inline;
+
+
+
+}
+
+.topnav li a{
+  display: inline-block;
+  color: white;
+   text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+
+
+}
+.reload{
+  text-align: center;
+  font-size: 15px;
+}
+.topnav li a:hover:not(.active) {
+    #background-color: #111;
+}
+#active{
+  background-color: #4CAF50;
+}
+.tm{
+  transition: 0.3s ease;
+  #background: #3fa46a;
+  #color: #ffffff;
+  font-size: 20px;
+  text-decoration: none;
+  #border-top: 4px solid #3fa46a;
+  #border-bottom: 4px solid #3fa46a;
+  #padding: 20px 0;
+  margin: 0 25px;
+}
+.tm:hover {
+  border-top: 8px solid #ffffff;
+  border-bottom: 8px solid #ffffff;
+  padding: 6px 0;
+}
+#main{
+  background-color: yellow;
+  min-height: 500px;
+  overflow: hidden;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.column {
+  float: left;
+  width: 20%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+
+
+.ctr {
+  border: 2px solid black;
+  width:1050px;
+  height: 50px;
+}
+.ctr h3{
+  text-align: center;
+  color: brown;
+}
+
+.ctr::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#column1{
+  padding-left: 10px;
+  background-color: white;
+  color: black;
+  width: 1100px;
+  float:right;
+  height: 500px;
+  max-height: 2000px;
+  background-image:url("cover2.jpg");
+  overflow: scroll;
+
+}
+ul.breadcrumb{
+  padding: 5px 10px;
+    list-style: none;
+
+
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+    padding: 5px;
+    color: black;
+    content: ">\00a0";
+}
+ul.breadcrumb li a {
+    color: black;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+      color: brown;
+    text-decoration: underline;
+}
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: grey}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+#sidebar{
+  background-color: #404040;
+  min-height: 500px;
+  max-height: 2000px;
+}
+.sidenav{
+  padding-top: 20px;
+  overflow-x: hidden;
+}
+.sidenav a{
+  padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+.sidenav a:hover {
+    color: green;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+.rad{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+.raddata{
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.checked {
+    color: orange;
+}
+
+.upd,.del,.acpt,.rej{
+  background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+.withdraw,.offer{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: auto;
+  cursor: pointer;
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.sp{
+  vertical-align: top;
+  font-size: 25px;
+  padding-top: 50px;
+}
+.sp1{
+  padding-top: 50px;
+  font-size: 50px;
+}
+
+.items img{
+  float: left;
+}
+
+
+
+footer{
+  background-color: #333;
+  min-height: 40px;
+  color: white;
+  text-align: center;
+}
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.signup-page {
+  width: 760px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.signupform {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 760px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.signupform input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.signupform button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.signupform .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.signupform .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.signupform button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.form .register-form {
+  display: none;
+}
+.signupform .register-form {
+  display: none;
+}
+@@media screen and  {min-width: 601px)
+  {
+    h2,p{
+      font-size: 80px;
+    }
+
+    }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness</title>
+  <link href="/resources/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div id="container">
+    <% include partials/header.ejs %>
+    <div id="topmenu">
+      <% include partials/user-navigation.ejs %>
+    </div>
+      <div id="main">
+        <div id="column1">
+          <div class="login-page">
+            <% if(start.length!=0){%>
+            <div class="form">
+              <form class="login-form" action="loginform" method="post" >
+                <input type="text" name ="Email" placeholder="Email" required/>
+                <input type="password" name="Password" placeholder="password" required/>
+                <button name="action">login</button>
+                <p class="message">Not registered? <a href="signup">Create an account</a></p>
+              </form>
+            </div>
+          <%}
+            else{%>
+              <div class="form">
+                <form class="login-form" action="loginform" method="post" >
+                  <input type="text" name ="Email" placeholder="username" required/>
+                  <input type="password" name="Password" placeholder="password" required/>
+                  <button name="action">login</button>
+                  <p class="message">Not registered? <a href="#">Create an account</a></p>
+                  <%if(typeof loginerrorsarray!=='undefined'){
+                    loginerrorsarray.forEach(function(errors){%>
+                      <p><%= errors.param %>
+                      <%= errors.msg %></p>
+                    <%})
+                  }%>
+                  <p class="invalid"><strong>Invalid Credentials</strong></p>
+                </form>
+              </div>
+              <%}%>
+          </div>
+        </div>
+        <div id="sidebar">
+          <% include partials/site-navigation.ejs %>
+        </div>
+        <% include partials/footer.ejs %>
+      </div>
+    </div>
+</body>
+</html>

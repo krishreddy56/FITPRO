@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness</title>
+    <link href="/resources/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+  <div id="container">
+    <% include partials/header_userlogin.ejs%>
+
+    <div id="topmenu">
+        <% include partials/logout.ejs %>
+    </div>
+    <div id="main">
+      <div id="column1">
+        <ul class="breadcrumb">
+          <li><a href="home">Home</a></li>
+          <li><a href="#">My Swaps</a></li>
+        </ul>
+
+        <br>
+        <br>
+        <h2>Krishna's Swap Offers</h2>
+        <br>
+        <table>
+          <tr>
+            <th>Instructor</th>
+            <th>Swap Offer</th>
+            <th>Options</th>
+          </tr>
+          <% if(allItems.length==0){%>
+
+            <tr id="lastrow">
+                <td colspan="3" align="center">No items to display</td></td>
+            </tr>
+
+        <% }
+        else{
+
+          for (var i=0;i< allItems.length;i++)
+
+          {%>
+          <tr>
+            <% if(allItems[i].offer_status=='pending'){%>
+            <% if(allItems[i].offeror_id==UserId){%>
+            <td><a href="item?itemCode=<%= allItems[i].offeror_itemCode %>"><%= allItems[i].offerdetail.itemName%></a></td>
+            <td><a href="Items?itemCode=<%= allItems[i].offeree_itemCode%>"><%= allItems[i].offerdetails.itemName%></a></td>
+            <form action="action?theItem=<%= allItems[i].offeror_itemCode%>" method="POST">
+              <input type="hidden" name="itemList" value="<%= allItems[i].offeror_itemCode%>">
+              <input type="hidden" name="offerId" value="<%= allItems[i].offerId%>">
+          <%}
+          else{%>
+              <td><a href="Items?itemCode=<%= allItems[i].offeree_itemCode%>"><%= allItems[i].offerdetails.itemName%></a></td>
+              <td><a href="item?itemCode=<%= allItems[i].offeror_itemCode %>"><%= allItems[i].offerdetail.itemName%></a></td>
+              <form action="action?theItem=<%= allItems[i].offeree_itemCode%>" method="POST">
+              <input type="hidden" name="itemList" value="<%= allItems[i].offeree_itemCode%>">
+              <input type="hidden" name="offerId" value="<%= allItems[i].offerId%>">
+        <%  }%>
+            <!-- <form action="action?theItem=<%= //allItems[i].Item.itemCode%>" method="POST"> -->
+            <!-- <input type="hidden" name="itemList" value="<%= //allItems[i].Item.itemCode%>"> -->
+            <% if(allItems[i].offeree_id==UserId){%>
+              <td> &nbsp;<input type="submit" class="acpt" name="action" value="Accept">
+                         <input type="submit" class="rej" name="action" value="Reject"></td>
+                <% }
+                else {%>
+            <td><input class="withdraw " type="submit" name="action" value="withdrawswap"></td>
+            <%}%>
+          </form>
+          <%}%>
+        </tr>
+        <% }%>
+     <% }%>
+            <!-- <tr>
+              <td><a href="item?itemCode=ins4">AKHIL</a></td>
+              <td><a href="item?itemCode=ins5">Anvesh</a></td>
+              <td><button class="withdraw " onclick="window.location.href='#'">Withdraw Swap</button></td>
+            </tr> -->
+       </table>
+      </div>
+      <div id="sidebar">
+      <% include partials/site-navigation.ejs %>
+
+      </div>
+    </div>
+
+    <% include partials/footer.ejs %>
+
+  </div>
+
+</body>
+</html>

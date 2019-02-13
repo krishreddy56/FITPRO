@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness</title>
+    <link href="/resources/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  <div id="container">
+   <% if(start.length!=0){%>
+   <% include partials/header_userlogin.ejs %>
+   <% }
+   else{%>
+     <% include partials/header.ejs %>
+     <% }%>
+
+    <div id="topmenu">
+
+        <% if(start.length!=0){%>
+          <% include partials/logout.ejs %>
+      <% }
+      else{%>
+        <% include partials/user-navigation.ejs %>
+      <% }%>
+
+    </div>
+    <div id="main">
+      <div id="column1">
+        <ul class="breadcrumb">
+          <li><a href="#">Home</a></li>
+
+        </ul>
+        <br>
+        <br>
+
+        <h2>Welcome to fit pro  Join  us and Be fit</h2>
+        <br>
+        <h3> This is the wesite which allows customers to choose instructors for their fitness programme</h3>
+
+        <br>
+        <p> Please check our website for newly added instructors</p>
+
+        <br><br>
+
+
+        <div class="row">
+          <div class="column">
+            <img src="./resources/yoga1.jpg" alt="yoga" width="1050" height="300">
+            <section class="ctr">
+              <br>
+              <h3><u>When you own your breath, nobody can steal your peace</u></h3>
+              <br>
+            </section>
+              <br><br>
+              <div class="row">
+                <img src="./resources/cardio3.jpg" alt="cardio" width="1050" height="300">
+                <br>
+                <section class="ctr">
+                  <br>
+                  <h3><u>Good Things come to those who sweat</u></h3>
+                </section>
+              </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div id="sidebar">
+        <% include partials/site-navigation.ejs %>
+    </div>
+
+  <% include partials/footer.ejs %>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/resources/style.css" rel="stylesheet" type="text/css" />
+    <title>Fitness</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+  <div id="container">
+    <% if(start.length!=0){%>
+    <% include partials/header_userlogin.ejs %>
+    <% }
+    else{%>
+      <% include partials/header.ejs %>
+      <% }%>
+
+    <div id="topmenu">
+
+      <% if(start.length!=0){%>
+        <% include partials/logout.ejs %>
+    <% }
+    else{%>
+      <% include partials/user-navigation.ejs %>
+    <% }%>
+
+    </div>
+    <div id="main">
+      <div id="column1">
+        <ul class="breadcrumb">
+          <li><a href="home">Home</a></li>
+          <li><a href="#">ContactUs</a></li>
+
+        </ul>
+        <br>
+        <br>
+
+        <h2>Contact us</h2>
+        <br>
+        <h3> Our office hours are from Monday to saturday 10:00 a.m to 6:00 p.m.Pleae fee free to contact us </h3>
+
+        <br>
+        <p> We are available at 999-999-9999.you can also reach us at <a href="#">fitpro@gmail.com </a></p>
+
+        <br><br>
+      </div>
+      <div id="sidebar">
+        <% include partials/site-navigation.ejs %>
+    </div>
+
+  <% include partials/footer.ejs %>
+
+  </div>
+</div>
+</body>
+</html>

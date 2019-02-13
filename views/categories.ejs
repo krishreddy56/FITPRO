@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/resources/style.css" rel="stylesheet" type="text/css" />
+    <title>Fitness</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+  <div id="container">
+    <% if(start.length!=0){%>
+    <% include partials/header_userlogin.ejs %>
+    <% }
+    else{%>
+      <% include partials/header.ejs %>
+    <% }%>
+
+    <div id="topmenu">
+      <% if(start.length!=0){%>
+        <% include partials/logout.ejs %>
+      <% }
+      else{%>
+    <% include partials/user-navigation.ejs %>
+    <% }%>
+    </div>
+    <div id="main">
+      <div id="column1">
+        <ul class="breadcrumb">
+          <li><a href="home">Home</a></li>
+          <li><a href="#">Categories</a></li>
+
+        </ul>
+        <br>
+        <% if(typeof error!=='undefined'){%>
+                      <p id="errormsg"><%= error%> <%= catalogcategory%></p>
+                 <%} else{
+           var i=0;
+           var j=0;
+        for (i=j;i< cc.length;i++){%>
+
+         <h2><br><%= cc[i].catalogCategory %></h2>
+
+        <br>
+        <div class="dropdown">
+          <button class="dropbtn">Instructors</button>
+          <div class="dropdown-content">
+            <% for (j=0;j< cc.length;j++){
+             if (cc[j].catalogCategory==cc[i].catalogCategory){%>
+            <a href="item?itemCode=<%= cc[j].itemCode%>"><%= cc[j].itemName %></a>
+            <% i=j;
+          }
+  }%>
+
+    </div>
+      </div>
+  <%  }
+}%>
+
+    </div>
+      <div id="sidebar">
+        <% include partials/site-navigation.ejs %>
+    </div>
+    <% include partials/footer.ejs %>
+  </div>
+</div>
+</body>
+</html>

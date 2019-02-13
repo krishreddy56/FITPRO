@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness</title>
+    <link href="/resources/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  <div id="container">
+    <% include partials/header_userlogin.ejs%>
+
+
+    <div id="topmenu">
+      <% include partials/logout.ejs %>
+    </div>
+    <div id="main">
+      <div id="column1">
+        <ul class="breadcrumb">
+          <li><a href="home">Home</a></li>
+          <li><a href="#">swap instructors</a></li>
+
+        </ul>
+        <br>
+        <h2> Swap this Item</h2>
+        <br>
+        <br>
+        <p class="items">
+          <img src="<%= senddata.imageUrl %>" alt="profile" width="150" height="150" >&nbsp; &nbsp;<span class="sp" style=""><%= senddata.itemName%></span>
+          <br><br>
+          <span>&nbsp;<%= senddata.description1 %><br><br>&nbsp;<%= senddata.description2%></span>
+        </p>
+        <br><br><br>
+        <h3>Below are the available instructors to swap.Please select one</h3>
+        <br>
+        <form action="#">
+          <table class="rad">
+            <% for (var i=0;i< swaplist.length;i++){%>
+            <tr>
+              <td class="raddata"><input type="radio" name="swapping" value=""/> <a href="item?itemCode=<%= swaplist[i].itemCode %>"> <%= swaplist[i].itemName %></a></td>
+            </tr>
+                <%}%>
+         </table>
+         <br>
+         <input type="button" class="button" value="Confirm for Swap" onclick="window.location.href='mySwaps'">
+        </form>
+
+      </div>
+      <div id="sidebar">
+        <% include  partials/site-navigation.ejs %>
+      </div>
+
+
+    <% include partials/footer.ejs %>
+
+  </div>
+</div>
+</body>
+</html>

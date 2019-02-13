@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness</title>
+    <link href="/resources/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  <div id="container">
+    <% if(start.length!=0){%>
+    <% include partials/header_userlogin.ejs %>
+    <% }
+    else{%>
+      <% include partials/header.ejs %>
+      <% }%>
+
+
+    <div id="topmenu">
+        <% if(start.length!=0){%>
+          <% include partials/logout.ejs %>
+      <% }
+      else{%>
+        <% include partials/user-navigation.ejs %>
+      <% }%>
+    </div>
+    <div id="main">
+      <div id="column1">
+        <ul class="breadcrumb">
+          <li><a href="home">Home</a></li>
+          <li><a href="categories">Categories</a></li>
+          <li><a href="#">Item</a></li>
+        </ul>
+        <br>
+        <br>
+
+
+
+        <p class="items">
+          <% if(typeof errors!=='undefined'&& Array.isArray(errors)){
+
+                      errors.forEach(function(errors){
+                          if(errors.param=='itemCode'){%>
+                              <p id="errormsg"><%= errors.msg%> <strong> <%= errors.value%></strong></p>
+                          <%}
+                      })
+                    }else{
+                      if(typeof senddata!=='undefined'){%>
+          <img src="<%= senddata.imageUrl %>" alt="profile" width="150" height="150" >&nbsp; &nbsp;<span class="sp" style=""><%= senddata.itemName %></span>
+          <br><br>&nbsp
+          <% if(msg.length!=0){%>
+                    <textarea  class ="message" style="resize: none;" rows="3" cols="50" readonly>
+                        <%= msg%>
+                    </textarea>
+                    <%}
+                    <!-- end -->
+                  else{%>
+
+                        <% if(start.length!=0){%>
+                            <!-- session started -->
+                            <% if (senddata.status==='swapped')
+                            {%>
+                                <p>You have swapped this item</p>
+                            <%}
+                            else if(senddata.status==='pending'){%>
+
+                                <p>&nbsp;You have a swap offer for this item</p>
+                                <br>&nbsp;
+                                <button class="offer" onclick="window.location.href='/myswaps'">See the offer</button>
+                                <br><br>
+                            <%}
+                            else{%>
+                              <form action="action?theItem=<%= senddata.itemCode%>" method="POST">
+                              <input type="hidden" name="itemList" value="<%= senddata.itemCode%>">&nbsp;
+          <button class="upd" name="action" value="offer" type="submit" ><img src="./resources/swap.png" alt="to swap" width=20 height=20>&nbsp;  swap it</button>
+          <br><br>&nbsp;
+          <button class="del" name="action" value="Rate" type="submit" onclick="window.location.href='#'"><img src="./resources/star1.jpg" alt="to rate" width=20 height=20>&nbsp;  Rate it</button>
+          <%}%>
+
+          <% }
+            else{%>
+        <br><br><br>
+        <br>
+        <br>
+        <%}%>
+        <%}%>
+
+        <br><br><br>
+
+        <p><%= senddata.description1 %><br><br><%= senddata.description2 %></p>
+      </form>
+      <%}
+    }%>
+      </div>
+
+
+      <div id="sidebar">
+        <% include partials/site-navigation.ejs %>
+      </div>
+
+
+    <% include partials/footer.ejs %>
+
+  </div>
+</div>
+</body>
+</html>

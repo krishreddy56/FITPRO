@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness</title>
+    <link href="/resources/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+  <div id="container">
+  <% include partials/header_userlogin.ejs%>
+    <div id="topmenu">
+      <% include partials/logout.ejs %>
+    </div>
+    <div id="main">
+      <div id="column1">
+
+        <ul class="breadcrumb">
+          <li><a href="home">Home</a></li>
+          <li><a href="#">My Instructors</a></li>
+
+        </ul>
+        <br>
+        <h2>Krishna's Instructors for swap</h2>
+        <br>
+        <table>
+          <tr>
+            <th>Instructor</th>
+            <th>Category</th>
+            <th>My Rating</th>
+            <th>Swapped</th>
+            <th>Actions</th>
+          </tr>
+          <% if(allItems.length==0){%>
+
+            <tr id="lastrow">
+              <td colspan="5" align="center">No items to display</td>
+          </tr>
+          <% }
+
+          else{%>
+
+            <% for (var i=0;i< allItems.length;i++)
+            {%>
+          <tr>
+            <td><a href="item?itemCode=<%= allItems[i].itemCode%>"><%= allItems[i].itemName%></a></td>
+            <td><%= allItems[i].catalogCategory%></td>
+            <td>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span></td>
+              <% if(allItems[i].status=='pending'){%>
+                <td><img src="./resources/swap.png" alt="swapped" width="30" height="30"></td> <% }
+                 else if (allItems[i].status=='swapped') {%>
+                  <td><img src ="./resources/tick1.jpg" alt="swapped" width="30" height="30"></td> <% }
+                  else {%>
+                    <td> </td> <% }%>
+                <td>
+                    <form action="action?theItem=<%= allItems[i].itemCode%>" method="POST">
+                    <input type="hidden" name="itemList" value="<%= allItems[i].itemCode%>">
+                    <input class="upd" type="submit" name="action" value="update"  >
+                    <input class="del" type="submit" name="action" value="delete" >
+                </form>
+                  </td>
+          </tr>
+        <%}%>
+    <%}%>
+
+
+
+
+
+            <!-- <tr>
+              <td><a href="item?itemCode=ins4">AKHIL</a></td>
+              <td>Cardio</td>
+              <td>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span></td>
+              <td></td>
+              <td><button class="upd" onclick="window.location.href='#'">update</button>  <button class="del" onclick="window.location.href='#'">delete</button></td>
+            </tr>
+            <tr>
+              <td><a href="item?itemCode=ins2">JC</a></td>
+              <td>Yoga</td>
+              <td>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span></td>
+              <td><img src ="./resources/swap.png" alt="swapped" width="30" height="30"></td>
+              <td><button class="upd" onclick="window.location.href='#'">update</button>
+              <button class="del" onclick="window.location.href='#'">delete</button></td>
+            </tr> -->
+
+
+       </table>
+       <br><br><br><br><br><br><br><br><br>
+       <P> Legend:<span> <img src="./resources/swap.png" alt="swapped" width="30" height="30">&nbsp; swap offer available &nbsp; <img src="./resources/tick1.jpg" alt="swapped" width="30" height="30">&nbsp; already swapped</span></p>
+
+
+
+      </div>
+      <div id="sidebar">
+        <% include partials/site-navigation.ejs %>
+    </div>
+
+    <% include partials/footer.ejs %>
+
+  </div>
+</div>
+</body>
+</html>

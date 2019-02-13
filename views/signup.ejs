@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness</title>
+  <link href="/resources/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div id="container">
+    <% include partials/header.ejs %>
+    <div id="topmenu">
+      <% include partials/user-navigation.ejs %>
+    </div>
+      <div id="main">
+        <div id="column1">
+          <ul class="breadcrumb">
+            <li><a href="signup">Register</a></li>
+          </ul>
+          <br>
+          <% if(typeof register!=='undefined'){%>
+                 <div id="beforelogin"><h2><%=firstname%>, your account was created sucessfully. Please <span><a href="/login">login</a></span> here</h2></div>
+            <%}else{%>
+          <div class="signup-page">
+            <div class="signupform">
+              <form class="login-form" action="/signup" method="post" >
+                <% if(typeof errorsarray!=='undefined' && typeof data!=='undefined'){%>
+                <input type="text" name="firstName" placeholder="FirstName" value="<%= data.FirstName%>" size="38"required/>
+                <input type="text" name="lastName" placeholder="LastName" value="<%= data.LastName%>" size="38"required/>
+                <input type="text" name="Username" placeholder="UserName" size="38" value="<%= data.Userame%>"required/>
+                <input type="text" name ="email" placeholder="email" size="38" value="<%= data.email%>"required/>
+                <input type="password" name="password" placeholder="password"size="38" required/>
+                <input type="password" name="cpassword" placeholder="cpassword" size="38" required/>
+                <input type="text" name ="address1" placeholder="Address1" value="<%= data.address1%>"size="38" />
+                <input type="text" name ="address2" placeholder="Address2" value="<%= data.address2%>"size="38" />
+                <input type="text" name ="city" placeholder="City" value="<%= data.city%>"/>
+                <input type="text" name ="state" placeholder="State" value="<%= data.state%>" />
+                <input type="text" name ="zipcode" placeholder="Zipcode" value="<%= data.zipcode%>" />
+                <input type="text" name ="country" placeholder="Country" value="<%= data.country%>" />
+                <% }
+
+                      else{%>
+                        <input type="text" name="firstName" placeholder="FirstName*"  size="38" required/>
+                        <input type="text" name="lastName" placeholder="LastName*"  size="38" required/>
+                        <input type="text" name="Username" placeholder="UserName*" size="38" required/>
+                        <input type="text" name ="email" placeholder="email*" size="38" required/>
+                        <input type="password" name="password" placeholder="password*" size="38" required/>
+                        <input type="password" name="cpassword" placeholder="confirm password*" size="38" required/>
+                        <input type="text" name ="address1" placeholder="Address1" size="38" />
+                        <input type="text" name ="address2" placeholder="Address2" size="38" />
+                        <input type="text" name ="city" placeholder="City" />
+                        <input type="text" name ="state" placeholder="State" />
+                        <input type="text" name ="zipcode" placeholder="Zipcode"/>
+                        <input type="text" name ="country" placeholder="Country" />
+                        <%}%>
+                        <p align="left">* fields are required</p><br>
+                          <button name="signup" value="signup">Register</button>
+                          <p class="message">Already registered? <a href="#">Sign in</a></p>
+                        </form>
+                      </div>
+          </div>
+          <% if(typeof errorsarray!=='undefined'){%>
+           <div class="errors">
+               <h2>***Registration Errors***</h2>
+               <%for (var i=0;i< errorsarray.length;i++){%>
+
+                  <span><%= errorsarray[i].msg%></span><br>
+               <%}%>
+
+          </div>
+          <%}%>
+
+        </div>
+        <%}%>
+        <div id="sidebar">
+          <% include partials/site-navigation.ejs %>
+        </div>
+        <% include partials/footer.ejs %>
+      </div>
+    </div>
+</body>
+</html>
